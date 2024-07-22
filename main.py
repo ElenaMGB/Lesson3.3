@@ -18,9 +18,12 @@ target_width = 80
 target_height = 80
 
 target_x = random.randint(0, SCREEN_WIDTH - target_width)
-target_y = random.randint(0, SCREEN_HEIGHT - target_height)
+target_y = random.randint(0, SCREEN_HEIGHT - target_height-5)
 
 color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
+# Инициализируем счетчик очков
+score = 0
 
 # игровой цикл
 running = True
@@ -34,7 +37,15 @@ while running:
             if target_x < mouse_x < target_x + target_width and target_y < mouse_y < target_y + target_height:
                 target_x = random.randint(0, SCREEN_WIDTH - target_width)
                 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
+                score += 1  # Увеличиваем счетчик очков при попадании
     screen.blit(target_img, (target_x, target_y))
+
+    # Отображаем счетчик очков на экране
+    font = pygame.font.Font(None, 36)
+    text = font.render(f"Счет: {score}", True, (128, 0, 0))
+    text_rect = text.get_rect(topright=(SCREEN_WIDTH - 10, 10))  # Позиция в правом верхнем углу
+    screen.blit(text, text_rect)
+
     pygame.display.update()
 
 pygame.quit()
