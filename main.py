@@ -12,7 +12,7 @@ pygame.display.set_caption("Игра Тир")
 icon=pygame.image.load("img/civ740.png")
 pygame.display.set_icon(icon) #Установим изображение как иконку для игры
 
-target_img=pygame.image.load("img/")
+target_img=pygame.image.load("img/target.png")
 target_width = 80
 target_heigth = 80
 
